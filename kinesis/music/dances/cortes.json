@@ -1,0 +1,79 @@
+[
+  {
+    "nombre": "Salsa",
+    "bpm": 112.1,
+    "corte": 18.2,
+    "volumen": -18,
+    "declarado": null
+  },
+  {
+    "nombre": "Merengue",
+    "bpm": 120,
+    "corte": 21.1,
+    "volumen": -15.7,
+    "declarado": null
+  },
+  {
+    "nombre": "Samba",
+    "bpm": 136.4,
+    "corte": 11.2,
+    "volumen": -17.7,
+    "declarado": null
+  },
+  {
+    "nombre": "Flamenco",
+    "bpm": 141.2,
+    "corte": 4.5,
+    "volumen": -18.5,
+    "declarado": null
+  },
+  {
+    "nombre": "Irish Ceili",
+    "bpm": 103.4,
+    "corte": 79.9,
+    "volumen": -16.9,
+    "declarado": null
+  },
+  {
+    "nombre": "Baile del Ainu",
+    "bpm": 72,
+    "corte": 0,
+    "volumen": -16.5,
+    "declarado": "canto sin pulso: la medición da ruido"
+  },
+  {
+    "nombre": "Izena no Kai",
+    "bpm": 151.9,
+    "corte": 71.4,
+    "volumen": -17.7,
+    "declarado": null
+  },
+  {
+    "nombre": "Sinte",
+    "bpm": 87.6,
+    "corte": 0,
+    "volumen": -19.4,
+    "declarado": null
+  },
+  {
+    "nombre": "Adowa",
+    "bpm": 87.6,
+    "corte": 108.5,
+    "volumen": -15.1,
+    "declarado": null
+  },
+  {
+    "nombre": "El Haka",
+    "bpm": 160,
+    "corte": 56.5,
+    "volumen": -14,
+    "declarado": null
+  },
+  {
+    "nombre": "El Hula",
+    "bpm": 66,
+    "corte": 9.4,
+    "volumen": -16.3,
+    "declarado": "grabación de 1920 muy lenta: la medición da ruido"
+  }
+]

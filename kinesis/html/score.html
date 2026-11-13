@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de Bailar · Resultado</title>
+
+    <link rel="stylesheet" href="../css/styles.css?v=11">
+    <link rel="stylesheet" href="../css/score.css?v=9">
+</head>
+
+<body data-pantalla="pantalla-score">
+
+    <video id="fondo-global" class="fondo-global" autoplay loop muted playsinline preload="auto">
+        <source src="../img/fondo-4K.webm" type="video/webm">
+    </video>
+
+
+    <div id="pantalla-score" class="screen score-screen active">
+        <div class="score-wrapper">
+            <img src="../img/title.webp" alt="Titulo" class="score-title-img">
+
+            <div class="profile-card">
+
+                <div class="pc-col-ficha">
+
+                    <div class="pc-cover">
+                        <img id="pc-cover-img" src="../img/cover-placeholder.webp" alt="">
+                        <div class="pc-cover-veil"></div>
+                    </div>
+
+                    <div class="pc-head">
+
+                        <div class="pc-avatar">
+                            <img id="pc-avatar-img" src="../img/avatar.svg" alt="">
+                        </div>
+
+                        <div class="pc-ident">
+                            <div class="pc-iniciales">
+                                <input id="pc-nombre" class="pc-nombre-input" type="text" maxlength="12"
+                                       placeholder="Tu nombre" autocomplete="off" autocapitalize="words"
+                                       spellcheck="false" aria-label="Escribe tu nombre para el ranking"
+                                       aria-describedby="pc-pista">
+                            </div>
+                            <p id="pc-pista" class="pc-pista">Escribe tu nombre para el ranking</p>
+                        </div>
+
+                        <div class="pc-dance">
+                            <span class="pc-dance-label">Baile</span>
+                            <span id="pc-dance-nombre" class="pc-dance-nombre">Salsa</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="pc-hero">
+                        <span class="pc-hero-label">Puntos</span>
+                        <span class="pc-hero-val" id="pc-rating">0</span>
+                    </div>
+
+
+                    <div class="pc-congrats">
+                        <h2 class="pc-congrats-titulo">Congratulations!</h2>
+                        <p class="pc-funfact-lab">Dato curioso de la cancion</p>
+                        <p id="pc-funfact" class="pc-funfact"></p>
+                    </div>
+
+                </div>
+
+
+                <div class="pc-col-ranking">
+                    <div id="leaderboard" class="leaderboard">
+                        <h3 id="lb-title">Top 5</h3>
+                        <ol id="lb-list" class="lb-list"></ol>
+                    </div>
+                </div>
+
+                <button id="restartBtn" class="pc-cta">
+                    <span class="pc-cta-flecha" aria-hidden="true">&rarr;</span>
+                    <span id="pc-cta-txt">Volver a Jugar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <svg width="0" height="0" aria-hidden="true" focusable="false"
+         style="position:absolute; pointer-events:none; opacity:0">
+        <defs>
+            <filter id="liquid-glass-filter" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
+                              numOctaves="1" seed="7" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="20" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+
+            <filter id="liquid-glass-strong" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.006 0.010"
+                              numOctaves="1" seed="19" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1.2" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="34" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="game-debugger" style="display: none;
+         position: fixed; top: 20px; right: 20px; background-color: rgba(20, 20, 20, 0.95); color: white; border: 2px solid #ffcc00; border-radius: 10px; padding: 15px; z-index: 100000; font-family: monospace; flex-direction: column; gap: 8px; box-shadow: 0px 10px 25px rgba(0,0,0,0.5); width: 180px;"></div>
+
+
+    <script src="../js/state.js?v=11"></script>
+    <script src="../js/sesion.js?v=8"></script>
+    <script src="../js/navegacion.js?v=8"></script>
+    <script src="../js/audio.js?v=8"></script>
+    <script src="../js/leaderboard.js?v=9"></script>
+    <script src="../js/debugger.js?v=15"></script>
+    <script src="../js/entrada.js?v=10"></script>
+    <script src="../js/pantalla-score.js?v=10"></script>
+    <script src="../js/inicio.js?v=8"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            iniciarPagina();
+            permitirAutoplay();
+
+            aplausos.play().catch(() => {});
+
+            montarBotonVolver();
+            pintarTarjetaScore();
+
+            window.entrada_UP = () => arribaSinRepetir(() => {
+                aplausos.pause();
+                volverAlInicio();
+            });
+        });
+    </script>
+
+</body>
+</html>

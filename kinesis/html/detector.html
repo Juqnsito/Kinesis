@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de Bailar · Aprende los pasos</title>
+
+    <link rel="stylesheet" href="../css/styles.css?v=11">
+    <link rel="stylesheet" href="../css/detector.css?v=17">
+
+
+    <script src="../mediapipe_pose/pose.js"></script>
+</head>
+
+<body data-pantalla="screen-detector">
+
+    <video id="fondo-global" class="fondo-global" autoplay loop muted playsinline preload="auto">
+        <source src="../img/fondo-4K.webm" type="video/webm">
+    </video>
+
+
+    <div id="screen-detector" class="screen detector active">
+        <h1 id="ejercicio-titulo" class="">Domina el Paso Base antes de ir a la Pista</h1>
+
+        <div class="detector-grid">
+            <div class="zona-ejercicio">
+                <div class="img-container">
+                    <video id="ejercicio-video" autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div class="zona-centro">
+                <div class="game-container liquid-glass liquid-glass--refract">
+                    <video id="webcam" data-muteable="0" autoplay playsinline style="display: none;"></video>
+                    <canvas id="output_canvas"></canvas>
+                </div>
+
+                <div class="stats-panel liquid-glass liquid-glass--refract-strong">
+                    <div id="instruction-bundle">
+                        <div id="exercise-instruction-panel">Cargando...</div>
+                        <div id="reps-count-panel">Reps: 0 / 0</div>
+
+                        <div id="placa-hint"></div>
+                    </div>
+                </div>
+
+                <div class="progress-container liquid-glass liquid-glass--refract">
+                    <div id="progress-bar"></div>
+                    <div id="perc-text">0%</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <svg width="0" height="0" aria-hidden="true" focusable="false"
+         style="position:absolute; pointer-events:none; opacity:0">
+        <defs>
+            <filter id="liquid-glass-filter" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
+                              numOctaves="1" seed="7" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="20" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+
+            <filter id="liquid-glass-strong" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.006 0.010"
+                              numOctaves="1" seed="19" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1.2" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="34" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="game-debugger" style="display: none;
+         position: fixed; top: 20px; right: 20px; background-color: rgba(20, 20, 20, 0.95); color: white; border: 2px solid #ffcc00; border-radius: 10px; padding: 15px; z-index: 100000; font-family: monospace; flex-direction: column; gap: 8px; box-shadow: 0px 10px 25px rgba(0,0,0,0.5); width: 180px;"></div>
+
+
+    <script src="../js/state.js?v=11"></script>
+    <script src="../js/sesion.js?v=8"></script>
+    <script src="../js/navegacion.js?v=8"></script>
+    <script src="../js/audio.js?v=8"></script>
+    <script src="../js/debugger.js?v=15"></script>
+    <script src="../js/entrada.js?v=10"></script>
+    <script src="../js/pantalla-detector.js?v=31"></script>
+    <script src="../js/inicio.js?v=8"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            iniciarPagina();
+            permitirAutoplay();
+
+            state.video  = document.getElementById("webcam");
+            state.canvas = document.getElementById("output_canvas");
+            state.ctx    = state.canvas.getContext("2d");
+
+            state.canvas.width  = 640;
+            state.canvas.height = 480;
+
+            const demoInicial = ((danceOptions[state.selectedDanceIdx] || {}).ejemplos || SECUENCIA_POR_DEFECTO)[0];
+            if (demoInicial) {
+                const videoDemo = document.getElementById("ejercicio-video");
+
+                videoDemo.addEventListener('loadeddata', () => {
+                    videoDemo.play().catch(() => {});
+                });
+                document.addEventListener('click', function encenderDemo() {
+                    videoDemo.play().catch(() => {});
+                }, { once: true });
+
+                videoDemo.src = demoInicial;
+            }
+
+            reiniciarDetector();
+            encenderDetector();
+
+            reabrirPlacaSiHay();
+
+            window.entrada_UP    = () => pulsacionPlaca('UP');
+            window.entrada_DOWN  = () => pulsacionPlaca('DOWN');
+            window.entrada_LEFT  = () => pulsacionPlaca('LEFT');
+            window.entrada_RIGHT = () => pulsacionPlaca('RIGHT');
+        });
+    </script>
+
+</body>
+</html>

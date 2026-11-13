@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de Bailar</title>
+
+    <link rel="stylesheet" href="../css/styles.css?v=10">
+    <link rel="stylesheet" href="../css/cta.css?v=9">
+
+    <!-- MediaPipe Pose: mismo runtime que usa el detector. Aqui solo
+         se precarga el script (el modelo se carga en detector.html). -->
+    <script src="../mediapipe_pose/pose.js"></script>
+</head>
+
+<body data-pantalla="screen-cta">
+
+    <video id="fondo-global" class="fondo-global" autoplay loop muted playsinline preload="auto">
+        <source src="../img/fondo-4K.webm" type="video/webm">
+    </video>
+
+    <!-- Call to Action para captar la atención del visitante -->
+    <div id="screen-cta" class="screen cta active">
+        <div id="tdo">
+            <div id="tdo-layout">
+
+                <div class="scroll" id="scroll-izq"></div>
+
+                <div id="cta-text-container">
+                    <div id="cta-title-container"></div>
+                </div>
+
+                <p class="prompt-universal">Toca arriba para continuar</p>
+
+                <div class="scroll" id="scroll-der"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros de refraccion del cristal liquido (mismo bloque que en
+         elegir.html y detector.html). Con las defs presentes, si alguna
+         clase usa url(#liquid-glass-...) el backdrop-filter ya no se
+         descarta y el vidrio se ve igual que en las otras paginas. -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false"
+         style="position:absolute; pointer-events:none; opacity:0">
+        <defs>
+            <filter id="liquid-glass-filter" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
+                              numOctaves="1" seed="7" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="20" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+
+            <filter id="liquid-glass-strong" x="0" y="0" width="100%" height="100%"
+                    color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.006 0.010"
+                              numOctaves="1" seed="19" result="ruido" />
+                <feGaussianBlur in="ruido" stdDeviation="1.2" result="ruidoSuave" />
+                <feDisplacementMap in="SourceGraphic" in2="ruidoSuave"
+                                   scale="34" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="game-debugger" style="display: none;
+         position: fixed; top: 20px; right: 20px; background-color: rgba(20, 20, 20, 0.95); color: white; border: 2px solid #ffcc00; border-radius: 10px; padding: 15px; z-index: 100000; font-family: monospace; flex-direction: column; gap: 8px; box-shadow: 0px 10px 25px rgba(0,0,0,0.5); width: 180px;"></div>
+
+    <div id="progress-dots" aria-hidden="true">
+        <div class="progress-dots__bar">
+            <div class="progress-dots__track"></div>
+            <div class="progress-dots__fill"></div>
+            <div class="progress-dots__thumb"></div>
+            <span class="progress-dots__dot" style="--i:0">1</span>
+            <span class="progress-dots__dot" style="--i:1">2</span>
+            <span class="progress-dots__dot" style="--i:2">3</span>
+            <span class="progress-dots__dot" style="--i:3">4</span>
+        </div>
+    </div>
+
+    <!-- flow/state/sesion/navegacion primero: el resto depende de ellos.
+         Aqui entran los datos de cada pantalla, porque el detector precarga
+         de poses se precargan ya para que el detector abra sin esperar. -->
+    <script src="../js/state.js?v=11"></script>
+    <script src="../js/sesion.js?v=8"></script>
+    <script src="../js/navegacion.js?v=8"></script>
+    <script src="../js/audio.js?v=8"></script>
+    <script src="../js/debugger.js?v=8"></script>
+    <script src="../js/entrada.js?v=9"></script>
+    <script src="../js/pantalla-cta.js?v=8"></script>
+    <script src="../js/pantalla-detector.js?v=9"></script>
+    <script src="../js/inicio.js?v=8"></script>
+
+    <script>
+        /* Salir del CTA siempre hace lo mismo: parar el texto rotativo, parar
+           la musica y avanzar. Tanto el clic como la flecha llaman a esta
+           funcion, asi que ninguno de los dos puede olvidarse un paso. */
+        function avanzarDesdeCta() {
+            pararMensajesInicio();
+            irAPantalla('screen-elegir');
+            tocarEfecto('cambiar.mp3', 0.2);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            iniciarPagina();
+            permitirAutoplay();
+
+            /* El modelo de poses y los videos de ejemplo se piden aqui,
+               en la pantalla que se lee sin prisa. Cuando el jugador
+               llegue al detector ya estan descargados: el modelo pesa
+               12 MB y pedirlo en ese momento se nota como unfreeze. */
+            precargarModelo();
+            precargarVideos();
+
+            /* El texto rotativo del titulo. */
+            arrancarMensajesInicio();
+
+            /* La musica de fondo del CTA. DTMF.mp3 son 3.8 MB: no es un
+               pitido, es una pista entera. Se dispara una sola vez al
+               entrar y suena hasta el final, asi que hay que pararla a
+               mano al salir: irAPantalla() llama a pararAudioDeLaPagina()
+               antes de saltar, y pagehide la corta tambien si el jugador
+               se va con el boton de atras del navegador. */
+            sfxDTMF.currentTime = 0;
+            sfxDTMF.play().catch(() => {});
+
+            /* Un clic en cualquier sitio pasa a la pantalla siguiente. */
+            document.getElementById('screen-cta').addEventListener('click', avanzarDesdeCta);
+
+            window.entrada_UP = () => arribaSinRepetir(avanzarDesdeCta);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <radialGradient id="ringGrad" cx="50" cy="38" r="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.04"/>
+    </radialGradient>
+  </defs>
+  <!-- Anillo de cristal: solo un reflejo suave, para no competir con las flechas -->
+  <circle cx="50" cy="50" r="30" fill="url(#ringGrad)"/>
+  <circle cx="50" cy="50" r="30" stroke="#ffffff" stroke-opacity="0.75" stroke-width="3.5"/>
+  <circle cx="50" cy="50" r="22" stroke="#9fd4ff" stroke-opacity="0.55" stroke-width="2"/>
+</svg>

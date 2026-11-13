@@ -1,0 +1,614 @@
+{
+  "schema": "dance-pose-calibration/v1",
+  "dance": "Flamenco",
+  "danceId": "flamenco",
+  "model": "movenet-singlepose-thunder",
+  "createdAt": "2026-10-20T15:15:38.682Z",
+  "keypointOrder": [
+    "nose",
+    "left_eye",
+    "right_eye",
+    "left_ear",
+    "right_ear",
+    "left_shoulder",
+    "right_shoulder",
+    "left_elbow",
+    "right_elbow",
+    "left_wrist",
+    "right_wrist",
+    "left_hip",
+    "right_hip",
+    "left_knee",
+    "right_knee",
+    "left_ankle",
+    "right_ankle"
+  ],
+  "minScore": 0.3,
+  "normalization": {
+    "origin": "hip-center",
+    "scale": "torso-length",
+    "yAxis": "down"
+  },
+  "scoring": {
+    "angleWeight": 0.6,
+    "positionWeight": 0.4
+  },
+  "poses": [
+    {
+      "id": "flamenco-izquierda",
+      "label": "flamenco-izquierda",
+      "tolerance": {
+        "preset": "media",
+        "angleDeg": 30,
+        "position": 0.4
+      },
+      "minScore": 0.3,
+      "normalizationMethod": "hip-center/torso-length",
+      "visibleKeypoints": 11,
+      "adjustedManually": [],
+      "keypoints": [
+        {
+          "name": "nose",
+          "x": -0.2613,
+          "y": -0.958,
+          "score": 0.1085,
+          "weight": 0
+        },
+        {
+          "name": "left_eye",
+          "x": -0.1245,
+          "y": -1.0415,
+          "score": 0.0974,
+          "weight": 0
+        },
+        {
+          "name": "right_eye",
+          "x": -0.3549,
+          "y": -0.946,
+          "score": 0.1661,
+          "weight": 0
+        },
+        {
+          "name": "left_ear",
+          "x": 0.0437,
+          "y": -1.1151,
+          "score": 0.2054,
+          "weight": 0
+        },
+        {
+          "name": "right_ear",
+          "x": -0.5771,
+          "y": -1.1172,
+          "score": 0.1748,
+          "weight": 0
+        },
+        {
+          "name": "left_shoulder",
+          "x": 0.5671,
+          "y": -1.0415,
+          "score": 0.6857,
+          "weight": 1
+        },
+        {
+          "name": "right_shoulder",
+          "x": -0.759,
+          "y": -0.9493,
+          "score": 0.4973,
+          "weight": 1
+        },
+        {
+          "name": "left_elbow",
+          "x": 1.1491,
+          "y": -0.7721,
+          "score": 0.388,
+          "weight": 1
+        },
+        {
+          "name": "right_elbow",
+          "x": -0.907,
+          "y": -0.8389,
+          "score": 0.1314,
+          "weight": 0
+        },
+        {
+          "name": "left_wrist",
+          "x": 1.1486,
+          "y": -0.6397,
+          "score": 0.6899,
+          "weight": 1
+        },
+        {
+          "name": "right_wrist",
+          "x": -0.5168,
+          "y": -0.8452,
+          "score": 0.3279,
+          "weight": 1
+        },
+        {
+          "name": "left_hip",
+          "x": 0.4614,
+          "y": -0.054,
+          "score": 0.7085,
+          "weight": 1
+        },
+        {
+          "name": "right_hip",
+          "x": -0.4614,
+          "y": 0.054,
+          "score": 0.5174,
+          "weight": 1
+        },
+        {
+          "name": "left_knee",
+          "x": 0.6025,
+          "y": 1.456,
+          "score": 0.6753,
+          "weight": 1
+        },
+        {
+          "name": "right_knee",
+          "x": -0.7457,
+          "y": 1.4142,
+          "score": 0.5666,
+          "weight": 1
+        },
+        {
+          "name": "left_ankle",
+          "x": 0.38,
+          "y": 2.8309,
+          "score": 0.8541,
+          "weight": 1
+        },
+        {
+          "name": "right_ankle",
+          "x": -0.9259,
+          "y": 2.8683,
+          "score": 0.748,
+          "weight": 1
+        }
+      ],
+      "angles": {
+        "left_elbow": 114.6,
+        "right_elbow": null,
+        "left_shoulder": 71.3,
+        "right_shoulder": null,
+        "left_hip": 168.5,
+        "right_hip": 151.7,
+        "left_knee": 165.5,
+        "right_knee": 175.3
+      }
+    },
+    {
+      "id": "flamenco-alante-izquierda",
+      "label": "flamenco-alante-izquierda",
+      "tolerance": {
+        "preset": "flexible",
+        "angleDeg": 45,
+        "position": 0.6
+      },
+      "minScore": 0.3,
+      "normalizationMethod": "hip-center/torso-length",
+      "visibleKeypoints": 11,
+      "adjustedManually": [],
+      "keypoints": [
+        {
+          "name": "nose",
+          "x": -0.099,
+          "y": -1.161,
+          "score": 0.0245,
+          "weight": 0
+        },
+        {
+          "name": "left_eye",
+          "x": -0.0163,
+          "y": -1.2243,
+          "score": 0.0103,
+          "weight": 0
+        },
+        {
+          "name": "right_eye",
+          "x": -0.2227,
+          "y": -1.1806,
+          "score": 0.0055,
+          "weight": 0
+        },
+        {
+          "name": "left_ear",
+          "x": 0.0833,
+          "y": -1.2027,
+          "score": 0.0313,
+          "weight": 0
+        },
+        {
+          "name": "right_ear",
+          "x": -0.3829,
+          "y": -1.1827,
+          "score": 0.0286,
+          "weight": 0
+        },
+        {
+          "name": "left_shoulder",
+          "x": 0.4046,
+          "y": -1.0279,
+          "score": 0.6398,
+          "weight": 1
+        },
+        {
+          "name": "right_shoulder",
+          "x": -0.5418,
+          "y": -0.9674,
+          "score": 0.6258,
+          "weight": 1
+        },
+        {
+          "name": "left_elbow",
+          "x": 0.4546,
+          "y": -0.7605,
+          "score": 0.3269,
+          "weight": 1
+        },
+        {
+          "name": "right_elbow",
+          "x": -0.4541,
+          "y": -0.7949,
+          "score": 0.5069,
+          "weight": 1
+        },
+        {
+          "name": "left_wrist",
+          "x": 0.2869,
+          "y": -0.5514,
+          "score": 0.3288,
+          "weight": 1
+        },
+        {
+          "name": "right_wrist",
+          "x": -0.0345,
+          "y": -0.5514,
+          "score": 0.4229,
+          "weight": 1
+        },
+        {
+          "name": "left_hip",
+          "x": 0.3057,
+          "y": -0.0183,
+          "score": 0.7398,
+          "weight": 1
+        },
+        {
+          "name": "right_hip",
+          "x": -0.3057,
+          "y": 0.0183,
+          "score": 0.807,
+          "weight": 1
+        },
+        {
+          "name": "left_knee",
+          "x": 0.1809,
+          "y": 0.986,
+          "score": 0.3468,
+          "weight": 1
+        },
+        {
+          "name": "right_knee",
+          "x": -0.3494,
+          "y": 1.0538,
+          "score": 0.5663,
+          "weight": 1
+        },
+        {
+          "name": "left_ankle",
+          "x": 0.0839,
+          "y": 1.8321,
+          "score": 0.2983,
+          "weight": 0
+        },
+        {
+          "name": "right_ankle",
+          "x": -0.1652,
+          "y": 2.1666,
+          "score": 0.7321,
+          "weight": 1
+        }
+      ],
+      "angles": {
+        "left_elbow": 130.7,
+        "right_elbow": 147.1,
+        "left_shoulder": 16.2,
+        "right_shoulder": 13.5,
+        "left_hip": 178.5,
+        "right_hip": 164.1,
+        "left_knee": null,
+        "right_knee": 168.2
+      }
+    },
+    {
+      "id": "flamenco-derecha",
+      "label": "flamenco-derecha",
+      "tolerance": {
+        "preset": "media",
+        "angleDeg": 30,
+        "position": 0.4
+      },
+      "minScore": 0.3,
+      "normalizationMethod": "bbox-center/bbox-size",
+      "visibleKeypoints": 10,
+      "adjustedManually": [],
+      "keypoints": [
+        {
+          "name": "nose",
+          "x": -0.1297,
+          "y": -0.4262,
+          "score": 0.0437,
+          "weight": 0
+        },
+        {
+          "name": "left_eye",
+          "x": -0.0994,
+          "y": -0.4623,
+          "score": 0.0212,
+          "weight": 0
+        },
+        {
+          "name": "right_eye",
+          "x": -0.1687,
+          "y": -0.4399,
+          "score": 0.0374,
+          "weight": 0
+        },
+        {
+          "name": "left_ear",
+          "x": -0.0383,
+          "y": -0.4764,
+          "score": 0.0815,
+          "weight": 0
+        },
+        {
+          "name": "right_ear",
+          "x": -0.2285,
+          "y": -0.4543,
+          "score": 0.2097,
+          "weight": 0
+        },
+        {
+          "name": "left_shoulder",
+          "x": 0.086,
+          "y": -0.5469,
+          "score": 0.2254,
+          "weight": 0
+        },
+        {
+          "name": "right_shoulder",
+          "x": -0.242,
+          "y": -0.4757,
+          "score": 0.4116,
+          "weight": 1
+        },
+        {
+          "name": "left_elbow",
+          "x": 0.2606,
+          "y": -0.5,
+          "score": 0.3507,
+          "weight": 1
+        },
+        {
+          "name": "right_elbow",
+          "x": -0.3267,
+          "y": -0.4267,
+          "score": 0.237,
+          "weight": 0
+        },
+        {
+          "name": "left_wrist",
+          "x": 0.1761,
+          "y": -0.3964,
+          "score": 0.7699,
+          "weight": 1
+        },
+        {
+          "name": "right_wrist",
+          "x": -0.3118,
+          "y": -0.4189,
+          "score": 0.3113,
+          "weight": 1
+        },
+        {
+          "name": "left_hip",
+          "x": 0.0794,
+          "y": -0.3578,
+          "score": 0.8071,
+          "weight": 1
+        },
+        {
+          "name": "right_hip",
+          "x": -0.1508,
+          "y": -0.3199,
+          "score": 0.7211,
+          "weight": 1
+        },
+        {
+          "name": "left_knee",
+          "x": 0.194,
+          "y": 0.0779,
+          "score": 0.6316,
+          "weight": 1
+        },
+        {
+          "name": "right_knee",
+          "x": -0.1586,
+          "y": 0.0963,
+          "score": 0.8132,
+          "weight": 1
+        },
+        {
+          "name": "left_ankle",
+          "x": 0.3118,
+          "y": 0.4602,
+          "score": 0.8514,
+          "weight": 1
+        },
+        {
+          "name": "right_ankle",
+          "x": -0.1431,
+          "y": 0.5,
+          "score": 0.7953,
+          "weight": 1
+        }
+      ],
+      "angles": {
+        "left_elbow": null,
+        "right_elbow": null,
+        "left_shoulder": null,
+        "right_shoulder": null,
+        "left_hip": null,
+        "right_hip": 148.6,
+        "left_knee": 177.6,
+        "right_knee": 176.7
+      }
+    },
+    {
+      "id": "flamenco-alante-derecha",
+      "label": "flamenco-alante-derecha",
+      "tolerance": {
+        "preset": "flexible",
+        "angleDeg": 45,
+        "position": 0.6
+      },
+      "minScore": 0.3,
+      "normalizationMethod": "hip-center/torso-length",
+      "visibleKeypoints": 12,
+      "adjustedManually": [],
+      "keypoints": [
+        {
+          "name": "nose",
+          "x": -0.1839,
+          "y": -1.0259,
+          "score": 0.06,
+          "weight": 0
+        },
+        {
+          "name": "left_eye",
+          "x": -0.1213,
+          "y": -1.0581,
+          "score": 0.0402,
+          "weight": 0
+        },
+        {
+          "name": "right_eye",
+          "x": -0.2216,
+          "y": -1.0538,
+          "score": 0.0269,
+          "weight": 0
+        },
+        {
+          "name": "left_ear",
+          "x": -0.0403,
+          "y": -1.1363,
+          "score": 0.1392,
+          "weight": 0
+        },
+        {
+          "name": "right_ear",
+          "x": -0.3631,
+          "y": -1.0788,
+          "score": 0.1164,
+          "weight": 0
+        },
+        {
+          "name": "left_shoulder",
+          "x": 0.4354,
+          "y": -1.054,
+          "score": 0.5135,
+          "weight": 1
+        },
+        {
+          "name": "right_shoulder",
+          "x": -0.4755,
+          "y": -0.9456,
+          "score": 0.5718,
+          "weight": 1
+        },
+        {
+          "name": "left_elbow",
+          "x": 0.4749,
+          "y": -0.7122,
+          "score": 0.5437,
+          "weight": 1
+        },
+        {
+          "name": "right_elbow",
+          "x": -0.6232,
+          "y": -0.6498,
+          "score": 0.3878,
+          "weight": 1
+        },
+        {
+          "name": "left_wrist",
+          "x": 0.1275,
+          "y": -0.2287,
+          "score": 0.7908,
+          "weight": 1
+        },
+        {
+          "name": "right_wrist",
+          "x": -0.5772,
+          "y": -0.5016,
+          "score": 0.373,
+          "weight": 1
+        },
+        {
+          "name": "left_hip",
+          "x": 0.2835,
+          "y": -0.0251,
+          "score": 0.5956,
+          "weight": 1
+        },
+        {
+          "name": "right_hip",
+          "x": -0.2835,
+          "y": 0.0251,
+          "score": 0.6097,
+          "weight": 1
+        },
+        {
+          "name": "left_knee",
+          "x": 0.2767,
+          "y": 0.879,
+          "score": 0.4887,
+          "weight": 1
+        },
+        {
+          "name": "right_knee",
+          "x": 0.0874,
+          "y": 0.8726,
+          "score": 0.3275,
+          "weight": 1
+        },
+        {
+          "name": "left_ankle",
+          "x": 0.2675,
+          "y": 2.1946,
+          "score": 0.5947,
+          "weight": 1
+        },
+        {
+          "name": "right_ankle",
+          "x": 0.1088,
+          "y": 1.9571,
+          "score": 0.413,
+          "weight": 1
+        }
+      ],
+      "angles": {
+        "left_elbow": 137.7,
+        "right_elbow": 136.2,
+        "left_shoulder": 15,
+        "right_shoulder": 37.7,
+        "left_hip": 172,
+        "right_hip": 167.6,
+        "left_knee": 180,
+        "right_knee": 157.5
+      }
+    }
+  ]
+}

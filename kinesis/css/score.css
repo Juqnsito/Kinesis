@@ -1,0 +1,419 @@
+.score-screen {
+    background:
+        radial-gradient(1100px 620px at 50% -10%, rgba(112, 215, 255, 0.30), transparent 62%),
+        linear-gradient(180deg, rgba(8, 30, 56, 0.62), rgba(4, 16, 32, 0.72));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.score-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.score-title-img {
+    position: absolute;
+    width: min(110rem, 78vw);
+    height: auto;
+    left: 50%;
+    top: clamp(10px, 2vh, 30px);
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0.40;
+    pointer-events: none;
+}
+
+.profile-card {
+    position: relative;
+    z-index: 2;
+    width: min(150rem, 98vw);
+    max-height: 96vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(36rem, 34%, 52rem);
+    align-content: start;
+    background:
+        linear-gradient(165deg, rgba(255, 255, 255, 0.92), rgba(226, 243, 255, 0.86));
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 4rem;
+    padding: 2.8rem 3.4rem 3.4rem;
+    gap: 0 2.6rem;
+    box-shadow:
+        0 34px 70px -20px rgba(3, 22, 44, 0.55),
+        0 0 0 1px rgba(112, 215, 255, 0.22) inset;
+    color: #06233d;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    scrollbar-width: thin;
+}
+
+.pc-col-ficha {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pc-col-ranking {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 0;
+}
+
+@media (max-width: 860px) {
+    .profile-card {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(92rem, 94vw);
+    }
+    .pc-col-ranking { grid-column: 1; grid-row: 2; }
+    .pc-cta { grid-column: 1; grid-row: 3; }
+}
+
+.pc-cover {
+    position: relative;
+    width: 100%;
+    height: clamp(15rem, 24vh, 26rem);
+    border-radius: 2.6rem;
+    overflow: hidden;
+    background:
+        radial-gradient(520px 300px at 50% 45%, rgba(112, 215, 255, 0.30), transparent 72%),
+        linear-gradient(160deg, rgba(120, 205, 255, 0.28), rgba(18, 74, 128, 0.40));
+}
+.pc-cover > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+.pc-cover-veil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+        rgba(112, 215, 255, 0.10) 0%,
+        rgba(20, 92, 150, 0.26) 55%,
+        rgba(6, 30, 56, 0.48) 100%);
+}
+
+.pc-avatar {
+    width: 11rem;
+    height: 11rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(150deg, rgba(112, 215, 255, 0.55), rgba(255, 255, 255, 0.75));
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 20px -6px rgba(3, 30, 58, 0.4);
+    overflow: hidden;
+}
+.pc-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pc-head {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 0.8rem 1.8rem;
+    margin-top: 2rem;
+}
+
+.pc-ident {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-bottom: 0.4rem;
+}
+
+.pc-iniciales {
+    display: flex;
+    min-width: 0;
+}
+.pc-nombre-input {
+    width: 100%;
+    min-width: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #06233d;
+    background: transparent;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: 0 2px;
+    outline: none;
+}
+.pc-nombre-input::placeholder {
+    color: #7fa9c8;
+    opacity: 0.75;
+    font-weight: 600;
+}
+.pc-nombre-input:focus {
+    border-bottom-color: #70d7ff;
+}
+
+.pc-pista {
+    margin: 0.4rem 0 0;
+    font-size: 1.3rem;
+    color: #4d7fa3;
+    font-weight: 500;
+}
+
+.pc-dance {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    padding-bottom: 0.6rem;
+    max-width: 40%;
+}
+.pc-dance-label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #4d7fa3;
+    font-weight: 700;
+}
+.pc-dance-nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #06233d;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.pc-rule {
+    border: 0;
+    border-top: 1px solid rgba(12, 70, 116, 0.16);
+    margin: 2.2rem 0;
+}
+
+.pc-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 1.8rem 1.6rem 1.6rem;
+    border-radius: 2.8rem;
+    background:
+        linear-gradient(170deg, rgba(112, 215, 255, 0.30), rgba(255, 255, 255, 0.55));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 1px rgba(10, 132, 255, 0.16) inset;
+}
+.pc-hero-label {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #2b6c9c;
+}
+.pc-hero-val {
+    font-size: clamp(4.5rem, 13vh, 9rem) !important;
+    line-height: 0.92;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: #06233d;
+    text-shadow: 0 6px 22px rgba(10, 132, 255, 0.22);
+    font-variant-numeric: tabular-nums;
+}
+
+.leaderboard {
+    margin-top: 0;
+}
+.leaderboard h3 {
+    margin: 0 0 1.8rem;
+    padding: 0 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #2b6c9c;
+}
+.lb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.lb-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 2.2rem 2.6rem;
+    border-radius: 2.6rem;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    color: #06233d;
+}
+.lb-nombre {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    min-width: 0;
+}
+.lb-pos {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.6rem;
+    height: 7.6rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(112, 215, 255, 0.34);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px -4px rgba(3, 30, 58, 0.45);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.lb-pos img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+.lb-puesto {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow:
+        0 1px 3px rgba(2, 20, 40, 0.9),
+        0 0 10px rgba(2, 20, 40, 0.6);
+}
+.lb-row-vacia { opacity: 0.35; }
+.lb-iniciales {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+.lb-score {
+    font-size: 3.4rem;
+    font-weight: 800;
+    color: #06233d;
+    font-variant-numeric: tabular-nums;
+}
+.lb-row-hoy {
+    background: linear-gradient(120deg, rgba(112, 215, 255, 0.55), rgba(255, 255, 255, 0.7));
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 26px -14px rgba(10, 132, 255, 0.7);
+}
+
+.pc-cta {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    width: 100%;
+    margin: 2.6rem 0 0;
+    padding: 2.4rem 3.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #0a84ff, #38bdf8);
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 14px 30px -14px rgba(10, 132, 255, 0.85);
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.pc-cta:hover { transform: scale(1.02); }
+.pc-cta:active { transform: scale(0.99); }
+.pc-cta-flecha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0a84ff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+@media (max-height: 860px) {
+    .pc-cover { height: clamp(12rem, 20vh, 21rem); }
+    .pc-nombre-input { font-size: 2.2rem; }
+    .pc-dance-nombre { font-size: 1.8rem; }
+    .pc-hero { padding: 1.4rem 1.4rem 1.2rem; }
+    .pc-hero-val { font-size: clamp(3.6rem, 10vh, 6.5rem) !important; }
+    .lb-row { padding: 1.8rem 2.2rem; }
+    .lb-pos { width: 6.4rem; height: 6.4rem; font-size: 1.3rem; }
+    .lb-iniciales { font-size: 2.3rem; }
+    .lb-score { font-size: 2.8rem; }
+}
+@media (max-height: 660px) {
+    .pc-cover { height: clamp(10rem, 16vh, 16rem); }
+    .pc-dance-nombre { font-size: 1.5rem; }
+    .score-title-img { display: none; }
+    .pc-hero-val { font-size: clamp(3rem, 9vh, 5rem) !important; }
+    .lb-list { gap: 1rem; }
+    .lb-row { padding: 1.4rem 1.8rem; border-radius: 2rem; }
+    .lb-pos { width: 5.6rem; height: 5.6rem; font-size: 1.15rem; }
+    .lb-iniciales { font-size: 2rem; }
+    .lb-score { font-size: 2.4rem; }
+}
+
+.pc-congrats {
+    margin: 2.6rem 0.8rem 0;
+    padding: 2.2rem 2.8rem 2.4rem;
+    border-radius: 2.8rem;
+    background: linear-gradient(160deg, rgba(112, 215, 255, 0.28), rgba(255, 255, 255, 0.55));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 1px rgba(10, 132, 255, 0.14) inset;
+    text-align: center;
+}
+
+.pc-congrats-titulo {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #06233d;
+    text-shadow: 0 6px 20px rgba(10, 132, 255, 0.20);
+}
+
+.pc-funfact-lab {
+    margin: 1.4rem 0 0.8rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #2b6c9c;
+}
+
+.pc-funfact {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    color: #123a5c;
+    text-align: left;
+    text-wrap: pretty;
+}

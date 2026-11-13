@@ -1,0 +1,8 @@
+.wrap-pantalla {
+    display: contents;
+}
+
+.screen:not(.active),
+.connect:not(.active) {
+    display: none !important;
+}
